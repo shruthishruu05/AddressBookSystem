@@ -115,6 +115,18 @@ public class AddressBook {
 		contactBook.set(index,null);
 		System.out.println("Deleted details of : "+ name);
 	}
+	public void searchByCityOrState()
+	{
+		System.out.println("enter the name of the city or state to perform search");
+		String cityOrState = sc.next();
+		for(int index=0;index<numberOfConatcts;index++) 
+		{
+			if(contactBook.get(index).getCity().equals(cityOrState)||contactBook.get(index).getState().equals(cityOrState))
+			{
+				System.out.println(contactBook.get(index));
+			}
+		}
+	}
 	
 	
 	public void display()

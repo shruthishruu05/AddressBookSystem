@@ -1,11 +1,15 @@
 package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Predicate;
 public class AddressBook 
 {
 	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
+	public  HashMap<String, ArrayList<ContactPerson>> personsByCity = new HashMap<String, ArrayList<ContactPerson>>();
+	public  HashMap<String, ArrayList<ContactPerson>> personsByState = new HashMap<String, ArrayList<ContactPerson>>();
+	
 	Scanner sc = new Scanner(System.in);
 	private static int numberOfConatcts = 0;
 	
@@ -21,6 +25,10 @@ public class AddressBook
 		else
 		{
 			contactBook.add(person);
+			if(personsByCity.get(person.getCity()) == null) personsByCity.put(person.getCity(), new ArrayList<>());
+			personsByCity.get(person.getCity()).add(person);
+			if(personsByState.get(person.getState()) == null) personsByState.put(person.getState(), new ArrayList<>());
+			personsByState.get(person.getState()).add(person);
 		}
 		
 		
@@ -146,6 +154,15 @@ public class AddressBook
 	public void searchByState(String state, String firstName) {
 		Predicate<ContactPerson> searchPerson = (contact -> contact.getState().equals(state)&& contact.getFirstName().equals(firstName));
 		contactBook.stream().filter(searchPerson).forEach(person -> output(person));
+	}
+	public void personsInCity(String city) {
+		ArrayList<ContactPerson> list = personsByCity.get(city);
+		list.stream().forEach(person -> output(person));
+	}
+	
+	public void personsInState(String State) {
+		ArrayList<ContactPerson> list = personsByState.get(State);
+		list.stream().forEach(person -> output(person));
 	}
 	private static void output(ContactPerson person) {
 		System.out.println("firstName : "+person.getFirstName());

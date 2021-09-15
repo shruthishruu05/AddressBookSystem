@@ -38,9 +38,6 @@ public class AddressBookMain {
 					System.out.println("Enter name");
 					addressBook.delete();
 					break;
-				case 5: 
-					addressBook.searchByCityOrState();
-					break;
 				default:
 					exit = false;
 					

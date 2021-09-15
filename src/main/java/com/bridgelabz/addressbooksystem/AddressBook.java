@@ -74,7 +74,7 @@ public class AddressBook {
 			break;
 		case 6:
 			System.out.println("Enter new Phone Number");
-			int newPNumber = sc.nextInt();
+			String newPNumber = sc.next();
 			contactBook.get(index).setPhoneNumber(newPNumber);
 			break;
 		case 7:
@@ -135,7 +135,7 @@ public class AddressBook {
 		System.out.println("Enter Pin code:");
 		person1.setZip(sc.nextInt());
 		System.out.println("Enter Phone nmber:");
-		person1.setPhoneNumber(sc.nextInt());
+		person1.setPhoneNumber(sc.next());
 		System.out.println("Enter email:");
 		person1.setEmail(sc.next());
 		return person1;

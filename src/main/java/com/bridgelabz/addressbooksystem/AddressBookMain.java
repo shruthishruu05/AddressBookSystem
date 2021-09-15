@@ -20,7 +20,7 @@ public class AddressBookMain {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city 6: search user by state 7:view by city 8:view by state 9: sort by name 10:Switch Address Book");
+			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city 6: search user by state 7:view by city 8:view by state 9: sort by name 10:sort by zip 11: sort by city 12: sort by state 13:Switch Address Book");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -64,6 +64,15 @@ public class AddressBookMain {
 					break;
 				case 9:
 					addressBook.sortByFirstName();
+					break;
+				case 10:
+					addressBook.sortByZip();
+					break;
+				case 11:
+					addressBook.sortByCity();
+					break;
+				case 12:
+					addressBook.sortByState();
 					break;
 					
 				default:

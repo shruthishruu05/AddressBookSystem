@@ -1,13 +1,15 @@
 package com.bridgelabz.addressbooksystem;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 public class AddressBookMain {
-	private static AddressBook[] addressBooks = new AddressBook[10];
+	private static List<AddressBook> addressBooks = new LinkedList<AddressBook>();
 	private static String[] addressBookName = new String[10];
 	private static int  numOfBooks =0;
 	
 	private boolean checkName(String name) {
-		for(int i=0;addressBooks[i]!=null;i++) {
+		for(int i=0;i<addressBooks.size();i++) {
 			if(addressBookName[i].equals(name)) return true;
 		}
 		return false;
@@ -18,7 +20,7 @@ public class AddressBookMain {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city or state 6:Switch Address Book");
+			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city 6: search user by state 7:Switch Address Book");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -29,6 +31,7 @@ public class AddressBookMain {
 					addressBook.edit();
 					break;
 				case 3:
+					System.out.println("display");
 					addressBook.display();
 					break;
 				case 4:
@@ -36,7 +39,19 @@ public class AddressBookMain {
 					addressBook.delete();
 					break;
 				case 5: 
-					addressBook.searchByCityOrState();
+					System.out.println("enter the name of the city");
+					String cityName = sc.next();
+					System.out.println("enter the first name to search for city");
+					String firstName = sc.next();
+					
+					addressBook.searchByCity(cityName,firstName);
+				case 6: 
+					System.out.println("enter the name of the city");
+					String stateName = sc.next();
+					System.out.println("enter the first name to search for city");
+					String firstName1 = sc.next();
+					
+					addressBook.searchByState(stateName,firstName1);
 					break;
 				default:
 					exit = false;
@@ -61,7 +76,7 @@ public class AddressBookMain {
 					System.out.println("Enter the address book name");
 					String name = sc.next();
 					currentBook  = new AddressBook();
-					addressBooks[numOfBooks] = currentBook;
+					addressBooks.add(currentBook);
 					addressBookName[numOfBooks] = name;
 					numOfBooks++;
 					break;
@@ -81,7 +96,7 @@ public class AddressBookMain {
 						System.out.println("name Not Found");
 						break;
 					}
-					currentBook = addressBooks[i];
+					currentBook = addressBooks.get(i);
 					addressMenu(currentBook);
 					break;
 				default:
@@ -92,6 +107,3 @@ public class AddressBookMain {
 		sc.close();
 	}
 }
-
-
-

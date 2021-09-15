@@ -104,7 +104,8 @@ public  void  delete ()
 		if(contactBook[index].getFirstName().equals(name)) {
 			break;
 		}
-	while(contactBook[index+1]!= null) {
+	while(contactBook[index+1]!= null) 
+	{
 		contactBook[index] = contactBook[index+1];
 		index++;
 	}
@@ -119,5 +120,4 @@ public void display()
 		System.out.println(contactBook[index]);
 	}
 }
-
 }

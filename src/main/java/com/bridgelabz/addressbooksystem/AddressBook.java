@@ -2,7 +2,7 @@ package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.function.Predicate;
 public class AddressBook 
 {
 	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
@@ -103,20 +103,6 @@ public class AddressBook
 		contactBook.set(index,null);
 		System.out.println("Deleted details of : "+ name);
 	}
-	public void searchByCityOrState()
-	{
-		System.out.println("enter the name of the city or state to perform search");
-		String cityOrState = sc.next();
-		for(int index=0;index<numberOfConatcts;index++) 
-		{
-			if(contactBook.get(index).getCity().equals(cityOrState)||contactBook.get(index).getState().equals(cityOrState))
-			{
-				System.out.println(contactBook.get(index));
-			}
-		}
-	}
-	
-	
 	public void display()
 	{
 		ContactPerson person;
@@ -151,6 +137,25 @@ public class AddressBook
 		System.out.println("Enter email:");
 		person1.setEmail(sc.next());
 		return person1;
+	}
+	public void searchByCity(String city,String firstName) {
+		Predicate<ContactPerson> searchPerson = (contact -> contact.getCity().equals(city)&& contact.getFirstName().equals(firstName));
+		contactBook.stream().filter(searchPerson).forEach(person -> output(person));
+	}
+	
+	public void searchByState(String state, String firstName) {
+		Predicate<ContactPerson> searchPerson = (contact -> contact.getState().equals(state)&& contact.getFirstName().equals(firstName));
+		contactBook.stream().filter(searchPerson).forEach(person -> output(person));
+	}
+	private static void output(ContactPerson person) {
+		System.out.println("firstName : "+person.getFirstName());
+		System.out.println("SecondName : "+ person.getLastName());
+		System.out.println("Address : "+ person.getAddress());
+		System.out.println("City : "+person.getCity());
+		System.out.println("State : "+person.getState());
+		System.out.println("Pin code : "+person.getZip());
+		System.out.println("Phone nmber : "+person.getPhoneNumber() );
+		System.out.println("email : "+person.getEmail());
 	}
 
 }

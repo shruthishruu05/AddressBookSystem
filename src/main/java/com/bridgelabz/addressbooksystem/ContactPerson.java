@@ -71,7 +71,8 @@ public class ContactPerson {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) 
+	{
 		this.phoneNumber = phoneNumber;
 	}
 	@Override

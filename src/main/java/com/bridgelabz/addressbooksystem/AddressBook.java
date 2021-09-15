@@ -3,7 +3,8 @@ package com.bridgelabz.addressbooksystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBook {
+public class AddressBook 
+{
 	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
 	Scanner sc = new Scanner(System.in);
 	private static int numberOfConatcts = 0;
@@ -17,7 +18,8 @@ public class AddressBook {
 		if(isDuplicate) {
 			System.out.println("Duplicate data entry. discarded");
 		}
-		else{
+		else
+		{
 			contactBook.add(person);
 		}
 		

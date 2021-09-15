@@ -68,7 +68,8 @@ public class ContactPerson {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setZip(int zip) {
+	public void setZip(int zip) 
+	{
 		this.zip = zip;
 	}
 	public void setPhoneNumber(String phoneNumber) 
@@ -83,5 +84,6 @@ public class ContactPerson {
     	return (this.firstName.equals(person1.firstName)  && this.lastName.equals(person1.lastName) && this.address.equals(person1.address) && this.city.equals(person1.city)
     			&& this.state.equals(person1.state) && this.phoneNumber.equals(person1.phoneNumber) && this.zip == person1.zip && this.email.equals(person1.email));
     }
+	
 	
 }

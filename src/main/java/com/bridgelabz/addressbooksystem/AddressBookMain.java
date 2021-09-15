@@ -20,7 +20,7 @@ public class AddressBookMain {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city or state 6:Switch Address Book");
+			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city 6: search user by state 7:view by city 8:view by state 9:Switch Address Book");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -31,6 +31,7 @@ public class AddressBookMain {
 					addressBook.edit();
 					break;
 				case 3:
+					System.out.println("display");
 					addressBook.display();
 					break;
 				case 4:
@@ -38,8 +39,30 @@ public class AddressBookMain {
 					addressBook.delete();
 					break;
 				case 5: 
-					addressBook.searchByCityOrState();
+					System.out.println("enter the name of the city");
+					String cityName = sc.next();
+					System.out.println("enter the first name to search for city");
+					String firstName = sc.next();
+					
+					addressBook.searchByCity(cityName,firstName);
+				case 6: 
+					System.out.println("enter the name of the city");
+					String stateName = sc.next();
+					System.out.println("enter the first name to search for city");
+					String firstName1 = sc.next();
+					addressBook.searchByState(stateName,firstName1);
 					break;
+				case 7:
+					System.out.println("enter the city name");
+					String city  = sc.next();
+					addressBook.personsInCity(city);
+					break;
+				case 8:
+					System.out.println("enter the state name");
+					String state  = sc.next();
+					addressBook.personsInState(state);
+					break;
+					
 				default:
 					exit = false;
 					
@@ -94,6 +117,3 @@ public class AddressBookMain {
 		sc.close();
 	}
 }
-
-
-

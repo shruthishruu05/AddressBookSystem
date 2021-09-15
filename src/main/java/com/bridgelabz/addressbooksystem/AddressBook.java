@@ -1,6 +1,8 @@
 package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
@@ -10,34 +12,20 @@ public class AddressBook {
 	
 	public void addContacts()
 	{
-		ContactPerson contactPerson = new ContactPerson();
-		String name = sc.next();
-		for(int i=0; i<contactBook.size();i++) {
-			if(contactBook.get(i).getFirstName().equals(name)) {
-				System.out.println("the name is already taken,hence duplicate value");
-				return;
-			}
+		System.out.println("Enter Person details:");
+		
+		ContactPerson person = details();
+		boolean isDuplicate = contactBook.stream().anyMatch(contact -> contact.equals(person));
+		if(isDuplicate) {
+			System.out.println("Duplicate data entry. discarded");
 		}
-
-		System.out.println("Enter first name:");
-		String firstName = sc.next();
-		System.out.println("Enter last name");
-		String lastName = sc.next();
-		System.out.println("Enter city");
-		String city = sc.next();
-		System.out.println("Enter address");
-		String address = sc.next();
-		System.out.println("Enter state");
-		String state = sc.next();
-		System.out.println("Enter email");
-		String email = sc.next();
-		System.out.println("Enter Phone");
-		int phoneNumber = sc.nextInt();
-		System.out.println("Enter Zip");
-		int zip = sc.nextInt();
-		contactBook.add(new ContactPerson(firstName, lastName, address, state, city, email, phoneNumber, zip));
-		numberOfConatcts++;
-	}
+		else{
+			contactBook.add(person);
+		}
+		
+		
+		}
+	
 	
 	public void edit()
 	{
@@ -119,10 +107,38 @@ public class AddressBook {
 	
 	public void display()
 	{
-		for(int index =0 ;index<numberOfConatcts;index++)
-		{
-			System.out.println(contactBook.get(index));
+		ContactPerson person;
+		System.out.println("Enter name to see details");
+		String name = sc.next();
+		
+		for(int i = 0;i<contactBook.size();i++) {
+			if(contactBook.get(i).getFirstName().equals(name)) {
+				person = contactBook.get(i);
+				System.out.println(person);
+			}
 		}
+	}
+	private static ContactPerson details() {
+		Scanner sc = new Scanner(System.in);
+		ContactPerson person1 = new ContactPerson();
+		
+		System.out.println("Enter firstName:");
+		person1.setFirstName(sc.next());
+		System.out.println("Enter SecondName:");
+		person1.setLastName(sc.next());
+		System.out.println("Enter Address:");
+		person1.setAddress(sc.next());
+		System.out.println("Enter City:");
+		person1.setCity(sc.next());
+		System.out.println("Enter State:");
+		person1.setState(sc.next());
+		System.out.println("Enter Pin code:");
+		person1.setZip(sc.nextInt());
+		System.out.println("Enter Phone nmber:");
+		person1.setPhoneNumber(sc.nextInt());
+		System.out.println("Enter email:");
+		person1.setEmail(sc.next());
+		return person1;
 	}
 
 }

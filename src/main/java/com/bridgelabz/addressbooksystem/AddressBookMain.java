@@ -8,6 +8,8 @@ package com.bridgelabz.addressbooksystem;
 		    addressBook.display();
 		    addressBook.edit();
 		    addressBook.display();
+		    addressBook.delete();
+		    addressBook.display();
 		}
 	}
 

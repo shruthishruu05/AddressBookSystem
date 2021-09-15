@@ -72,6 +72,12 @@ public class ContactPerson {
 	{
 		this.zip = zip;
 	}
+	@Override
+	public String toString() {
+		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
+				+ city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phoneNumber=" + phoneNumber
+				+ "]";
+	}
 	public void setPhoneNumber(String phoneNumber) 
 	{
 		this.phoneNumber = phoneNumber;

@@ -164,6 +164,11 @@ public class AddressBook
 		ArrayList<ContactPerson> list = personsByState.get(State);
 		list.stream().forEach(person -> output(person));
 	}
+	public  void sortByFirstName() {
+		contactBook.stream()
+					 .sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+					 .forEach(System.out::println);
+	}
 	private static void output(ContactPerson person) {
 		System.out.println("firstName : "+person.getFirstName());
 		System.out.println("SecondName : "+ person.getLastName());

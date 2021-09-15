@@ -9,9 +9,10 @@ public class ContactPerson {
 	private String city;
 	private String state;
 	private String email;
-	private int zip,phoneNumber;
+	private int zip;
+	private String phoneNumber;
 	public ContactPerson(String firstName, String lastName, String address, String city, String state, String email,
-			int zip, int phoneNumber) {
+			int zip, String phoneNumber) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,7 +47,7 @@ public class ContactPerson {
 	public int getZip() {
 		return zip;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void setFirstName(String firstName) {
@@ -70,14 +71,16 @@ public class ContactPerson {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	@Override
-	public String toString() {
-		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-				+ city + ", state=" + state + ", email=" + email +  ", phoneNumber=" + phoneNumber+", zip=" + zip 
-				+ "]";
-	}
+    public boolean equals(Object object) {
+    	if(object == this)  return true;
+    	if(!(object instanceof ContactPerson)) return false;
+    	ContactPerson person1 = (ContactPerson) object;
+    	return (this.firstName.equals(person1.firstName)  && this.lastName.equals(person1.lastName) && this.address.equals(person1.address) && this.city.equals(person1.city)
+    			&& this.state.equals(person1.state) && this.phoneNumber.equals(person1.phoneNumber) && this.zip == person1.zip && this.email.equals(person1.email));
+    }
 	
 }

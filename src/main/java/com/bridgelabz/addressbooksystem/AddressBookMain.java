@@ -7,6 +7,7 @@ public class AddressBookMain {
 	private static List<AddressBook> addressBooks = new LinkedList<AddressBook>();
 	private static String[] addressBookName = new String[10];
 	private static int  numOfBooks =0;
+	public static AddressBookFileIO addressBookFileIO = new AddressBookFileIO();
 	
 	private boolean checkName(String name) {
 		for(int i=0;i<addressBooks.size();i++) {
@@ -20,7 +21,13 @@ public class AddressBookMain {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option 1: add user.  2: edit existing user.  3: display all users 4:Delete contact. 5:seach userby city 6: search user by state 7:view by city 8:view by state 9: sort by name 10:sort by zip 11: sort by city 12: sort by state 13:Switch Address Book");
+			System.out.println("Select option 1: add user.  2: edit existing user.  "
+					+ "3: display all users 4:Delete contact. 5:seach userby city "
+					+ "6: search user by state 7:view by city 8:view by state"
+					+ " 9: sort by name 10:sort by zip 11: sort by city "
+					+ "12: sort by state 13:Switch Address Book"
+					+ "13: Write to file"
+					+ "14. Read from file");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -74,6 +81,12 @@ public class AddressBookMain {
 				case 12:
 					addressBook.sortByState();
 					break;
+				case 13:
+					addressBook.write();
+					break;
+				case 14:
+					List<String> listaddressBook = addressBook.read();
+					break;
 					
 				default:
 					exit = false;
@@ -98,7 +111,9 @@ public class AddressBookMain {
 					System.out.println("Enter the address book name");
 					String name = sc.next();
 					currentBook  = new AddressBook();
+					currentBook.setAdressBookName(name);
 					addressBooks.add(currentBook);
+				
 					addressBookName[numOfBooks] = name;
 					numOfBooks++;
 					break;

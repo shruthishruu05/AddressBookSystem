@@ -2,8 +2,10 @@ package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
+
 public class AddressBook 
 {
 	private ArrayList<ContactPerson> contactBook = new ArrayList<ContactPerson>();
@@ -12,7 +14,32 @@ public class AddressBook
 	
 	Scanner sc = new Scanner(System.in);
 	private static int numberOfConatcts = 0;
+	 private String adressBookName;
 	
+	
+	@Override
+	public String toString() {
+		return "AddressBook [adressBookName=" + adressBookName + "]";
+	}
+
+
+	public String getAdressBookName() {
+		return adressBookName;
+	}
+
+
+	public void setAdressBookName(String adressBookName) {
+		this.adressBookName = adressBookName;
+	}
+	public String nameString = this.adressBookName+".txt";
+	public void write() {
+		AddressBookFileIO.writeData(contactBook, this.adressBookName+".txt");
+	}
+	
+	public List<String> read() {
+		return AddressBookFileIO.readDataFromFile(this.adressBookName);
+	}
+
 	public void addContacts()
 	{
 		System.out.println("Enter Person details:");

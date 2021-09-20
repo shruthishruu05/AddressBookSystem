@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddressBookFileIO {
-
+public  class AddressBookFileIO {
+	
 	public static void writeData(List<ContactPerson> addressBook,String filename) {
 		
 		StringBuffer addressBookBuffer = new StringBuffer();
@@ -47,4 +47,25 @@ public static List<String> readDataFromFile(String filename) {
 		}
 		return addressBookList;
 	}
+
+	public void display(String fileName) {
+		
+		try {
+			Files.lines(new File(fileName).toPath()).forEach(System.out::println);
+		}
+		catch(IOException e) {e.printStackTrace();}
+		
+	}
+
+	public long countEntries(String fileName) {
+		
+		long entries=0;
+		try {
+			entries = Files.lines(new File(fileName).toPath()).count();
+		}
+		catch(IOException e) {e.printStackTrace();};
+		return entries;
+	}
+
+	
 }

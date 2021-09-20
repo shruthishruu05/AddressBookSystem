@@ -2,7 +2,8 @@ package com.bridgelabz.addressbooksystem;
 
 import java.util.Collection;
 import com.opencsv.bean.CsvBindByName;
-public class ContactPerson {
+public class ContactPerson 
+{
 	/*private String firstName;
 	private String lastName;
 	private String address;

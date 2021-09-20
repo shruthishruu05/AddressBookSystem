@@ -34,7 +34,9 @@ public class AddressBookMain {
 					+ "13: Write to file"
 					+ "14. Read from file"
 					+ "15. Write to CSV"
-					+ "16. Read from CSV");
+					+ "16. Read from CSV"
+					+ "17. Write to JSON"
+					+ "18. Read from JSON");
 			option  = sc.nextInt();
 			switch(option) {
 				case 1 :
@@ -108,6 +110,23 @@ public class AddressBookMain {
 	                }catch (IOException e) {
 	                    e.printStackTrace();
 	                }
+					break;
+				case 17:
+				try {
+					addressBook.writeDataToJson();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					break;
+				
+				case 18:
+				try {
+					addressBook.readDataFromJson();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					break;
 					
 				default:

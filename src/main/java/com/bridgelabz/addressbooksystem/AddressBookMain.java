@@ -95,7 +95,8 @@ public class AddressBookMain {
 					List<String> listaddressBook = addressBook.read();
 					break;
 				case 15:
-					try {
+					try 
+					{
 						addressBook.writeDataToCSV();
 	                }catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
 	                    e.printStackTrace();

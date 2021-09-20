@@ -1,16 +1,40 @@
 package com.bridgelabz.addressbooksystem;
 
 import java.util.Collection;
-
+import com.opencsv.bean.CsvBindByName;
 public class ContactPerson {
-	private String firstName;
+	/*private String firstName;
 	private String lastName;
 	private String address;
 	private String city;
 	private String state;
 	private String email;
 	private int zip;
+	private String phoneNumber;*/
+	@CsvBindByName(column = "First Name")
+	private String firstName;
+	
+	@CsvBindByName(column = "Last Name")
+	private String lastName;
+	
+	@CsvBindByName(column = "Email")
+	private String email;
+	
+	@CsvBindByName(column = "Phone Number")
 	private String phoneNumber;
+	
+	@CsvBindByName(column = "City")
+	private String city;
+	
+	@CsvBindByName(column = "State")
+	private String state;
+	
+	@CsvBindByName(column = "Zip Code")
+	private int zip;
+	
+	@CsvBindByName(column = "address")
+	private String address;
+	
 	public ContactPerson(String firstName, String lastName, String address, String city, String state, String email,
 			int zip, String phoneNumber) {
 		super();

@@ -6,7 +6,8 @@ import java.util.List;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
-public interface AddressBookIF {
+public interface AddressBookIF 
+{
 	public void addContacts();
 	public void edit();
 	public void delete();

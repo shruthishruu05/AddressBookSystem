@@ -31,7 +31,8 @@ public class AddressBook implements AddressBookIF
 	
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "AddressBook [adressBookName=" + adressBookName + "]";
 	}
 

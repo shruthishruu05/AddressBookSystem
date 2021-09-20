@@ -20,6 +20,8 @@ public interface AddressBookIF
 	public  void sortByZip();
 	public  void sortByCity();
 	public  void sortByState();
+	 public void writeDataToJson() throws IOException;
+	 public void readDataFromJson() throws IOException;
 	public void writeDataToCSV() throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException;
 	public <CsvValidationException extends Throwable> void readDataFromCSV() throws IOException, CsvValidationException;	
 }
